@@ -1,0 +1,29 @@
+{
+  "name": "borismontavon_7_29082021",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "postcss ./src/css/*.css -o ./dist/compiled.css",
+    "watch": "postcss ./src/css/*.css -o ./dist/compiled.css --watch --verbose",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/borisMontavon/BorisMontavon_7_29082021.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/borisMontavon/BorisMontavon_7_29082021/issues"
+  },
+  "homepage": "https://github.com/borisMontavon/BorisMontavon_7_29082021#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.3.3",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1",
+    "postcss-import": "^14.0.2",
+    "tailwindcss": "^2.2.8"
+  }
+}
