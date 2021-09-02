@@ -1,0 +1,70 @@
+/* Ingredients, machine and ustensiles seach inputs */
+
+#ingredients-search {
+    input {
+        border: 1px solid transparent;
+        outline: none;
+
+        &::placeholder {
+            color: var(--white);
+        }
+
+        &:hover {
+            border: 1px solid var(--azure-border-hover) !important;
+        }
+
+        &:focus-visible {
+            border: 1px solid var(--azure-border-hover) !important;
+        }
+    }
+
+    i {
+        right: 15px;
+    }
+}
+
+#machine-search {
+    input {
+        border: 1px solid transparent;
+        outline: none;
+
+        &::placeholder {
+            color: var(--white);
+        }
+
+        &:hover {
+            border: 1px solid var(--mediumGreen-border-hover) !important;
+        }
+
+        &:focus-visible {
+            border: 1px solid var(--mediumGreen-border-hover) !important;
+        }
+    }
+
+    i {
+        right: 15px;
+    }
+}
+
+#ustensils-search {
+    input {
+        border: 1px solid transparent;
+        outline: none;
+
+        &::placeholder {
+            color: var(--white);
+        }
+
+        &:hover {
+            border: 1px solid var(--fireOpal-border-hover) !important;
+        }
+
+        &:focus-visible {
+            border: 1px solid var(--fireOpal-border-hover) !important;
+        }
+    }
+
+    i {
+        right: 15px;
+    }
+}
