@@ -1,1 +1,4 @@
-@import "./title.css"
+@import "./logo.css";
+@import "./input.css";
+@import "./recipe-container";
+@import "./search-inputs";

@@ -6,10 +6,76 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="dist/compiled.css">
+        <link rel="stylesheet" href="dist/css/compiled.css">
     </head>
-    <body>
-        <h1 class="text-red-300">Hello world !!!</h1>
-        <script src=""></script>
+    <body class="w-11/12 lg:w-10/12 m-auto font-sans">
+        <header class="p-6">
+            <div class="flex flex-col items-center">
+                <img src="./assets/logo/chefs-hat.svg" alt="Les petits plats" class="logo-w-h mb-2">
+                <h1 class="font-inter font-semibold text-indianRed text-base md:text-2xl lg:text-4xl">Les petits plats</h1>
+            </div>
+        </header>
+        <section>
+            <div id="input-search" class="relative flex items-center mb-6">
+                <input type="text" class="bg-platinum w-full p-4 pr-10 md:p-5 lg:p-6 rounded transition-all text-sm md:text-base" placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette">
+                <i class="fas fa-search absolute text-lg md:text-2xl lg:text-3xl cursor-pointer transition-all"></i>
+            </div>
+        </section>
+        <section>
+            <div class="mb-6">
+                <div class="mb-4">
+                    <div id="ingredients-search" class="relative flex items-center">
+                        <input type="text" class="bg-azure text-white font-medium w-full p-4 rounded transition-all" placeholder="Ingrédients">
+                        <i class="fas fa-chevron-down absolute text-lg cursor-pointer transition-all text-white"></i>
+                    </div>
+                    <div id="ingredients-list" class="grid grid-cols-2 gap-4 bg-azure">
+                        <div>Lait de coco</div>
+                        <div>Jus de citron</div>
+                        <div>Crème de coco</div>
+                        <div>Sucre</div>
+                    </div>
+                </div>
+                <div id="machine-search" class="relative flex items-center mb-4">
+                    <input type="text" class="bg-mediumGreen text-white font-medium w-full p-4 rounded transition-all" placeholder="Appareil">
+                    <i class="fas fa-chevron-down absolute text-lg cursor-pointer transition-all text-white"></i>
+                </div>
+                <div id="ustensils-search" class="relative flex items-center">
+                    <input type="text" class="bg-fireOpal text-white font-medium w-full p-4 rounded transition-all" placeholder="Ustensiles">
+                    <i class="fas fa-chevron-down absolute text-lg cursor-pointer transition-all text-white"></i>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div>
+                <div class="recipe-container bg-silver rounded">
+                    <div class="img-bg-replacement w-full h-3/6 rounded-t"></div>
+                    <div class="recipe-info bg-platinum w-full h-3/6 rounded-b px-6 py-4 flex flex-col items-stretch">
+                        <div class="title-time flex justify-between mb-4">
+                            <h3 class="font-semibold">Poulet de coco réunionnais</h3>
+                            <div class="flex items-center">
+                                <i class="far fa-clock mr-1.5"></i>
+                                <p class="font-bold">80 min</p>
+                            </div>
+                        </div>
+                        <div class="ingredients-description text-xs flex justify-between">
+                            <div class="ingredients w-2/4">
+                                <ul>
+                                    <li>
+                                        <p><strong>Poulet: </strong> 1</p>
+                                        <p><strong>Lait de coco: </strong> 400ml</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="description w-2/4">
+                                <p>Découper le poulet en morceaux, les faire dorer dans une cocotte avec de l'huile d'olive. Salez et poivrez. Une fois doré, laisser cuire en ajoutant de l'eau. Au bout de 30 minutes, ajouter le coulis de tomate, le lait de coco ainsi que le poivron et l'oignon découpés en morceaux. Laisser cuisiner 30 minutes de plus. Servir avec du riz</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <script src="https://kit.fontawesome.com/45058126b7.js" crossorigin="anonymous"></script>
+        <script src="dist/js/index.bundle.js"></script>
     </body>
 </html>

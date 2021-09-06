@@ -1,0 +1,15 @@
+/* Recipe container */
+
+.recipe-container {
+    height: 350px;
+
+    .description {
+        p {
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+            white-space: normal;
+        }
+    }
+}

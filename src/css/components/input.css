@@ -1,0 +1,25 @@
+#input-search {
+    input {
+        border: 1px solid transparent;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        outline: none;
+        
+        &:hover {
+            border: 1px solid var(--indianRed) !important;
+        }
+
+        &:focus-visible {
+            border: 1px solid var(--indianRed) !important;
+        }
+    }
+    
+    i {
+        right: 15px;
+
+        &:hover {
+            color: var(--indianRed);
+        }
+    }
+}
