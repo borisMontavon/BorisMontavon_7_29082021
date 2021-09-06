@@ -1,6 +1,6 @@
 module.exports = {
   purge: [],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "class", // or 'media' or 'class'
   theme: {
     colors: {
       transparent: "transparent",
@@ -28,11 +28,22 @@ module.exports = {
       },
       platinum: "var(--platinum)",
       gainsboro: "var(--gainsboro)",
-      silver: "var(--silver)"
+      silver: "var(--silver)",
+
+      // Dark mode
+      darkWhite: "var(--dark-white)",
+      black: "var(--black)",
+      richBlack: "var(--rich-black)",
+      eerieBlack: "var(--eerie-black)",
+      jet: "var(--jet)",
+      onyx: "var(--onyx)"
     },
     extend: {
       fontFamily: {
         "inter": ["Inter", "sans-serif"]
+      },
+      gridTemplateRows: {
+        "auto": "auto"
       }
     },
     // 'sm': '640px',

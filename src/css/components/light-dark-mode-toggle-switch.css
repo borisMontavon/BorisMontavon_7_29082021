@@ -1,0 +1,48 @@
+ /* The switch - the box around the slider */
+ .switch {
+    width: 32px;
+    height: 16px;
+}
+
+/* The slider */
+.slider {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    &::before {
+        position: absolute;
+        content: "";
+        height: 12px;
+        width: 12px;
+        left: 2px;
+        bottom: 2px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    /* Rounded slider */
+    &.round {
+        border-radius: 34px;
+
+        &::before {
+            border-radius: 50%;
+        }
+    }
+}
+
+input {
+    &:checked {
+        + .slider {
+            background-color: var(--indianRed);
+
+            &::before {
+                -webkit-transform: translateX(16px);
+                -ms-transform: translateX(16px);
+                transform: translateX(16px);
+            }
+        }
+    }
+}

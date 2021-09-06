@@ -1,4 +1,5 @@
 @import "./logo.css";
+@import "./light-dark-mode-toggle-switch";
 @import "./input.css";
 @import "./recipe-container";
 @import "./search-inputs";
