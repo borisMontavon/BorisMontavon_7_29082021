@@ -28,4 +28,21 @@
 
     /* Background replacement gray */
     --silver: #C7BEBE;
+
+    /* Dark mode palette */
+    /* Text color */
+    --dark-white: #E2E2E2;
+    --black: #000;
+
+    /* Background color */
+    --rich-black: #121212;
+
+    /* Input bg color */
+    --eerie-black: #1F1F1F;
+
+    /* Image replacement color */
+    --jet: #1D1D1D;
+
+    /* Recipe infos */
+    --onyx: #2C2C2C;
 }
