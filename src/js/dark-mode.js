@@ -1,11 +1,13 @@
 export const toggleDarkMode = () => {
-    if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-        document.documentElement.classList.add("dark")
-    } else {
-        document.documentElement.classList.remove("dark")
-    }
-
     const switchMode = document.getElementById("modeToggle");
+
+    if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.classList.add("dark");
+        switchMode.checked = true;
+    } else {
+        document.documentElement.classList.remove("dark");
+        switchMode.checked = false;
+    }
 
     switchMode.addEventListener("change", (e) => {
         e.preventDefault();
