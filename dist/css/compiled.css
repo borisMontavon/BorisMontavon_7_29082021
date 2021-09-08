@@ -24789,12 +24789,16 @@ input:checked + .slider::before {
 /* Recipe container */
 
 .recipe-container {
-  height: 350px;
+  height: 450px;
 }
+
+.recipe-container .title-time {
+    min-height: 50px !important;
+  }
 
 .recipe-container .description p {
       display: -webkit-box;
-      -webkit-line-clamp: 6;
+      -webkit-line-clamp: 8;
       -webkit-box-orient: vertical;
       overflow: hidden;
       white-space: normal;
@@ -24932,6 +24936,66 @@ input:checked + .slider::before {
 }
   }
 
+/* Top button style */
+
+#toTopButton {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 98;
+  border: none;
+  outline: none;
+  background-color: var(--indianRed);
+  color: var(--white);
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#toTopButton:focus {
+    background-color: var(--indianRed-hover);
+  }
+
+@media (min-width: 768px) {
+
+#toTopButton {
+    bottom: 30px;
+
+    right: 30px;
+
+    border-radius: 25px;
+
+    width: 45px;
+
+    height: 45px
+}
+  }
+
+#toTopButton i {
+    font-size: 1.2rem;
+  }
+
+@media (min-width: 768px) {
+
+#toTopButton i {
+      font-size: 1.4rem
+  }
+    }
+
+@media (min-width: 1024px) {
+
+#toTopButton {
+    transition: .3s
+}
+
+    #toTopButton:hover {
+      background-color: var(--indianRed-hover);
+    }
+  }
+
 /* Colors variables */
 
 :root {
@@ -24968,6 +25032,20 @@ input:checked + .slider::before {
   --jet: #1D1D1D;
   /* Recipe infos */
   --onyx: #2C2C2C;
+}
+
+/* Selection rules */
+
+::-moz-selection {
+  background-color: var(--indianRed);
+  color: var(--white);
+  text-shadow: none;
+}
+
+::selection {
+  background-color: var(--indianRed);
+  color: var(--white);
+  text-shadow: none;
 }
 
 /* Fonts imports */

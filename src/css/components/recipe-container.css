@@ -1,12 +1,16 @@
 /* Recipe container */
 
 .recipe-container {
-    height: 350px;
+    height: 450px;
+
+    .title-time {
+        min-height: 50px !important;
+    }
 
     .description {
         p {
             display: -webkit-box;
-            -webkit-line-clamp: 6;
+            -webkit-line-clamp: 8;
             -webkit-box-orient: vertical;  
             overflow: hidden;
             white-space: normal;
