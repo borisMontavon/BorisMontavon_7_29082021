@@ -38,6 +38,8 @@ export const handleDropdown = () => {
         });
     });
 
+    // dropdown-list addEventListener() click  preventDefault & stopIm.pro
+
     document.body.addEventListener('click', () => {
         resetDropdownsState(dropdowns);        
     });

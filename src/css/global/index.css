@@ -1,1 +1,9 @@
 @import "./variables.css";
+
+/* Selection rules */
+
+::selection {
+    background-color: var(--indianRed);
+    color: var(--white);
+    text-shadow: none;
+}
