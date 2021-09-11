@@ -27,33 +27,33 @@
         <!-- Main search input -->
         <section>
             <div id="input-search" class="relative flex items-center mb-6">
-                <input type="text" class="bg-platinum dark:bg-eerieBlack w-full p-4 pr-10 md:p-5 lg:p-6 rounded transition-all text-sm md:text-base" placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette">
+                <input type="text" class="bg-platinum dark:bg-eerieBlack w-full p-4 pr-10 md:p-5 lg:p-6 rounded transition-all text-sm md:text-base text-white" placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette">
                 <i class="fas fa-search absolute text-lg md:text-2xl lg:text-3xl cursor-pointer transition-all dark:text-darkWhite"></i>
             </div>
         </section>
         <!-- Ingredients, machine and ustensils search inputs -->
         <section class="mb-6 lg:mb-20">
-            <div class="lg:flex">
+            <div id="precise-search-inputs" class="lg:flex">
                 <!-- Ingredients input -->
                 <div class="imu-container relative mb-4 lg:mr-4 lg:w-1/3">
                     <div id="ingredients-search" class="relative flex items-center toggle-dropdown z-10" data-dropdown="ingredients-list" data-input="ingredients-input">
-                        <input type="text" id="ingredients-input" class="bg-azure font-medium w-full p-4 rounded" placeholder="Ingrédients">
+                        <input type="text" id="ingredients-input" class="dropdown-input bg-azure font-medium w-full p-4 rounded text-white" data-dropdown="ingredients-list" placeholder="Ingrédients">
                         <i class="fas fa-chevron-down absolute text-lg cursor-pointer transition-all text-white"></i>
                     </div>
                     <div id="ingredients-list" class="dropdown-list grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-2 text-sm md:text-base bg-azure text-white dark:text-darkWhite rounded-b relative top-0"></div>
                 </div>
                 <!-- Machine input -->
                 <div class="imu-container mb-4 relative lg:mr-4 lg:w-1/3">
-                    <div id="machine-search" class="relative flex items-center toggle-dropdown z-10" data-dropdown="machine-list" data-input="machine-input">
-                        <input type="text" id="machine-input" class="bg-mediumGreen text-white font-medium w-full p-4 rounded" placeholder="Appareil">
+                    <div id="machine-search" class="relative flex items-center toggle-dropdown z-10" data-dropdown="machines-list" data-input="machine-input">
+                        <input type="text" id="machine-input" class="dropdown-input bg-mediumGreen text-white font-medium w-full p-4 rounded text-white" data-dropdown="machines-list" placeholder="Appareil">
                         <i class="fas fa-chevron-down absolute text-lg cursor-pointer transition-all text-white"></i>
                     </div>
-                    <div id="machine-list" class="dropdown-list grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-2 text-sm md:text-base bg-mediumGreen text-white rounded-b top-0"></div>
+                    <div id="machines-list" class="dropdown-list grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-2 text-sm md:text-base bg-mediumGreen text-white rounded-b top-0"></div>
                 </div>
                 <!-- Ustensils input -->
                 <div class="imu-container relative lg:w-1/3">
                     <div id="ustensils-search" class="relative flex items-center toggle-dropdown z-10" data-dropdown="ustensils-list" data-input="ustensils-input">
-                        <input type="text" id="ustensils-input" class="bg-fireOpal text-white font-medium w-full p-4 rounded" placeholder="Ustensiles">
+                        <input type="text" id="ustensils-input" class="dropdown-input bg-fireOpal text-white font-medium w-full p-4 rounded text-white" data-dropdown="ustensils-list" placeholder="Ustensiles">
                         <i class="fas fa-chevron-down absolute text-lg cursor-pointer transition-all text-white"></i>
                     </div>
                     <div id="ustensils-list" class="dropdown-list grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-2 text-sm md:text-base bg-fireOpal text-white rounded-b top-0"></div>
