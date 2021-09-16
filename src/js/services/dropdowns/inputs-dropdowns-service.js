@@ -1,4 +1,4 @@
-export const handleDropdown = () => {
+export const handleInputsDropdowns = () => {
     const dropdowns = document.getElementsByClassName("toggle-dropdown");
 
     Array.from(dropdowns).forEach((dropdown) => {
@@ -70,7 +70,7 @@ const resetDropdownsState = (dropdowns) => {
     });
 
     document.getElementById("ingredients-input").placeholder = "Ingrédients";
-    document.getElementById("machine-input").placeholder = "Appareil";
+    document.getElementById("machines-input").placeholder = "Appareil";
     document.getElementById("ustensils-input").placeholder = "Ustensiles";
 }
 

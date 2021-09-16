@@ -16,15 +16,15 @@ module.exports = {
       // For buttons
       fireOpal: {
         DEFAULT: "var(--fireOpal)",
-        hover: "var(--fireOpal-border-hover)"
+        disabled: "var(--fireOpal-disabled-color)"
       },
       azure: {
         DEFAULT: "var(--azure)",
-        hover: "var(--azure-border-hover)"
+        disabled: "var(--azure-disabled-color)"
       },
       mediumGreen: {
         DEFAULT: "var(--mediumGreen)",
-        hover: "var(--mediumGreen-border-hover)"
+        disabled: "var(--mediumGreen-disabled-color)"
       },
       platinum: "var(--platinum)",
       gainsboro: "var(--gainsboro)",
