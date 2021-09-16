@@ -74,17 +74,29 @@
 /* Dropdowns lists */
 
 .dropdown-list {
-    opacity: 0;
-    height: 0;
+    display: none;
 }
 
 .dropdown-fadeIn {
-    opacity: 1 !important;
-    height: auto !important;
+    display: grid;
 
     @media (min-width: 1024px) {
         position: absolute;
         top: 56px;
         width: 100%;
     }
+}
+
+/* Dropdowns lists elements */
+
+.ingredient-element-selected {
+    color: var(--azure-disabled-color) !important;
+}
+
+.machine-element-selected {
+    color: var(--mediumGreen-disabled-color) !important;
+}
+
+.ustensil-element-selected {
+    color: var(--fireOpal-disabled-color) !important;
 }

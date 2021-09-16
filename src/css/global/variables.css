@@ -10,15 +10,15 @@
 
     /* Lighter red */
     --fireOpal: #ED6454;
-    --fireOpal-border-hover: #EA4634;
+    --fireOpal-disabled-color: #B92413;
 
     /* Blue */
     --azure: #3282F7;
-    --azure-border-hover: #146EF5;
+    --azure-disabled-color: #074BB0;
 
     /* Green */
     --mediumGreen: #68D9A4;
-    --mediumGreen-border-hover: #4BD293;
+    --mediumGreen-disabled-color: #29A36A;
 
     /* Background gray */
     --platinum: #E7E7E7;

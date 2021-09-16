@@ -1,13 +1,24 @@
-import { displayList } from "./services/display-lists-service";
-import { filterList } from "./services/filter-list";
-import { getDistinctIngredientsList } from "./services/ingredients-list";
-import { getDistinctMachineList } from "./services/machine-list";
-import { getDistinctUstensilsList } from "./services/ustensils-list";
-import { handleDropdown } from "./components/filter-button";
-import { recipeDisplay } from "./components/recipe-display";
-import Singleton from "./services/static-list-container";
-import { toggleDarkMode } from "./components/dark-mode";
-import topButton from "./components/top-button";
+import { handleInputsDropdowns } from "./services/dropdowns/inputs-dropdowns-service";
+
+import StaticListContainer from "./components/static-list-container";
+import { getDistinctIngredientsList } from "./services/ingredients/get-ingredients-list-service";
+import { getDistinctMachineList } from "./services/machines/get-machines-list-service";
+import { getDistinctUstensilsList } from "./services/ustensils/get-ustensils-list-service";
+
+import { displayIngredientsList } from "./services/ingredients/display-ingredients-list-service";
+import { filterIngredientsList } from "./services/ingredients/ingredient-input-service";
+import { ingredientsEventListener } from "./services/ingredients/ingredient-tag-service";
+import { displayMachinesList } from "./services/machines/display-machines-list-service";
+import { filterMachinesList } from "./services/machines/machine-input-service";
+import { machinesEventListener } from "./services/machines/machine-tag-service";
+import { displayUstensilsList } from "./services/ustensils/display-ustensils-list-service";
+import { filterUstensilsList } from "./services/ustensils/ustensil-input-service";
+import { ustensilsEventListener } from "./services/ustensils/ustensil-tag-service";
+
+import { recipeDisplay } from "./services/recipes/recipe-display-service";
+
+import { toggleDarkMode } from "./services/dark-mode/dark-mode-service";
+import topButton from "./services/top-button/top-button-service";
 
 // Recipes' data fetch from json
 const getData = async (url) => {
@@ -21,17 +32,29 @@ const initializeData = async () => {
     const data = await getData("assets/data.json");
 
     // Handle the way the dropdown displays itself
-    handleDropdown();
+    handleInputsDropdowns();
 
-    // Render the list of ingredients, machines and ustensils in their respectives inputs
-    let singleton = new Singleton();
+    // Save the lists of ingredients, machines and ustensils after we removed the duplicates and plural
+    let staticListContainer = new StaticListContainer();
 
-    singleton.ingredientsList = getDistinctIngredientsList(data);
-    singleton.machinesList = getDistinctMachineList(data);
-    singleton.ustensilsList = getDistinctUstensilsList(data);
+    staticListContainer.ingredientsList = getDistinctIngredientsList(data);
+    staticListContainer.machinesList = getDistinctMachineList(data);
+    staticListContainer.ustensilsList = getDistinctUstensilsList(data);
 
-    displayList();
-    filterList();
+    // Ingredients list display, input filter and event listener
+    displayIngredientsList();
+    filterIngredientsList();
+    ingredientsEventListener();
+
+    // Machines list display, input filter and event listener
+    displayMachinesList();
+    filterMachinesList();
+    machinesEventListener();
+
+    // Ustensils list display, input filter and event listener
+    displayUstensilsList();
+    filterUstensilsList();
+    ustensilsEventListener();
 
     // Render all the recipes in its container
     const recipesContainer = document.getElementById("recipes-container");
