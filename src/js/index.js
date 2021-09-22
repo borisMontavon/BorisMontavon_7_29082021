@@ -1,24 +1,15 @@
-import { handleInputsDropdowns } from "./services/dropdowns/inputs-dropdowns-service";
-
-import StaticListContainer from "./components/static-list-container";
+import DropdownComponent from "./components/dropdown-component";
+import RecipeComponent from "./components/recipe-component";
+import { toggleDarkMode } from "./services/dark-mode/dark-mode-service";
+import { eventDropdownInput } from "./services/dropdown-input/event-dropdown-input-service";
+import { toggleDropdowns } from "./services/dropdowns/dropdown-service";
+import { displayFilterElements } from "./services/filter-elements/display-filter-elements-service";
+import { eventFilterElement } from "./services/filter-elements/event-filter-element-service";
 import { getDistinctIngredientsList } from "./services/ingredients/get-ingredients-list-service";
 import { getDistinctMachineList } from "./services/machines/get-machines-list-service";
+import { displayAllRecipes } from "./services/recipes/recipe-display-service";
+import { topButton } from "./services/top-button/top-button-service";
 import { getDistinctUstensilsList } from "./services/ustensils/get-ustensils-list-service";
-
-import { displayIngredientsList } from "./services/ingredients/display-ingredients-list-service";
-import { filterIngredientsList } from "./services/ingredients/ingredient-input-service";
-import { ingredientsEventListener } from "./services/ingredients/ingredient-tag-service";
-import { displayMachinesList } from "./services/machines/display-machines-list-service";
-import { filterMachinesList } from "./services/machines/machine-input-service";
-import { machinesEventListener } from "./services/machines/machine-tag-service";
-import { displayUstensilsList } from "./services/ustensils/display-ustensils-list-service";
-import { filterUstensilsList } from "./services/ustensils/ustensil-input-service";
-import { ustensilsEventListener } from "./services/ustensils/ustensil-tag-service";
-
-import { recipeDisplay } from "./services/recipes/recipe-display-service";
-
-import { toggleDarkMode } from "./services/dark-mode/dark-mode-service";
-import topButton from "./services/top-button/top-button-service";
 
 // Recipes' data fetch from json
 const getData = async (url) => {
@@ -31,37 +22,60 @@ const getData = async (url) => {
 const initializeData = async () => {
     const data = await getData("assets/data.json");
 
-    // Handle the way the dropdown displays itself
-    handleInputsDropdowns();
+    // Recipes management
+    let recipeComponents = [];
 
-    // Save the lists of ingredients, machines and ustensils after we removed the duplicates and plural
-    let staticListContainer = new StaticListContainer();
-
-    staticListContainer.ingredientsList = getDistinctIngredientsList(data);
-    staticListContainer.machinesList = getDistinctMachineList(data);
-    staticListContainer.ustensilsList = getDistinctUstensilsList(data);
-
-    // Ingredients list display, input filter and event listener
-    displayIngredientsList();
-    filterIngredientsList();
-    ingredientsEventListener();
-
-    // Machines list display, input filter and event listener
-    displayMachinesList();
-    filterMachinesList();
-    machinesEventListener();
-
-    // Ustensils list display, input filter and event listener
-    displayUstensilsList();
-    filterUstensilsList();
-    ustensilsEventListener();
-
-    // Render all the recipes in its container
-    const recipesContainer = document.getElementById("recipes-container");
-
-    data.forEach((recipe) => {
-        recipesContainer.insertAdjacentHTML("beforeend", recipeDisplay(recipe));
+    data.forEach((recipeData) => {
+        recipeComponents.push(new RecipeComponent(recipeData));
     });
+
+    displayAllRecipes(recipeComponents);
+
+    // Dropdowns management
+    let ingredientDropdown = new DropdownComponent({
+        type: "ingredients",
+        containerHtmlId: "ingredients-dropdown-container",
+        toggleDropdownHtmlId: "ingredients-search",
+        dropdownHtmlId: "ingredients-list",
+        inputHtmlId: "ingredients-input",
+        iconHtmlId: "ingredients-dropdown-icon",
+        filterElements: getDistinctIngredientsList(data)
+    });
+
+    let machineDropdown = new DropdownComponent({
+        type: "machines",
+        containerHtmlId: "machines-dropdown-container",
+        toggleDropdownHtmlId: "machine-search",
+        dropdownHtmlId: "machines-list",
+        inputHtmlId: "machines-input",
+        iconHtmlId: "machines-dropdown-icon",
+        filterElements: getDistinctMachineList(data)
+    });
+
+    let ustensilDropdown = new DropdownComponent({
+        type: "ustensils",
+        containerHtmlId: "ustensils-dropdown-container",
+        toggleDropdownHtmlId: "ustensils-search",
+        dropdownHtmlId: "ustensils-list",
+        inputHtmlId: "ustensils-input",
+        iconHtmlId: "ustensils-dropdown-icon",
+        filterElements: getDistinctUstensilsList(data)
+    });
+
+    displayFilterElements(ingredientDropdown);
+    displayFilterElements(machineDropdown);
+    displayFilterElements(ustensilDropdown);
+
+    eventFilterElement(ingredientDropdown);
+    eventFilterElement(machineDropdown);
+    eventFilterElement(ustensilDropdown);
+
+    eventDropdownInput(ingredientDropdown);
+    eventDropdownInput(machineDropdown);
+    eventDropdownInput(ustensilDropdown);
+
+    // Handle the behavior of the dropdowns
+    toggleDropdowns([ingredientDropdown, machineDropdown, ustensilDropdown]);
 };
 
 window.addEventListener("load", () => {

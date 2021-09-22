@@ -1,4 +1,4 @@
-export default function topButton() {
+export const topButton = () => {
     $(window).scroll(() => {
         const height = $(window).scrollTop();
         
