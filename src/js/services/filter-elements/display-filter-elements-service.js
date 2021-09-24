@@ -4,7 +4,7 @@ export const displayFilterElements = (dropdownComponent) => {
     dropdownListHtmlElement.innerHTML = "";
 
     dropdownComponent.state.filterComponents.forEach((filterComponent) => {
-        if (filterComponent.state.displayed) {
+        if (filterComponent.state.displayed && filterComponent.state.isInDisplayedRecipe) {
             dropdownListHtmlElement.insertAdjacentHTML("beforeend", `<button id="${filterComponent.state.uuid}" class="${filterComponent.getCssClass()} text-left">${filterComponent.state.title}</button>`);
         }
     });

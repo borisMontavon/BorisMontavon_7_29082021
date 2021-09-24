@@ -1,10 +1,15 @@
-export const displayAllRecipes = (recipeComponents) => {
+import Store from "../../components/store";
+
+export const displayAllRecipes = () => {
+    let store = new Store();
     const recipesContainer = document.getElementById("recipes-container");
 
     recipesContainer.innerHTML = "";
 
-    recipeComponents.forEach((recipeComponent) => {
-        recipesContainer.insertAdjacentHTML("beforeend", displayRecipe(recipeComponent));
+    store.recipeComponents.forEach((recipeComponent) => {
+        if (recipeComponent.state.displayed) {
+            recipesContainer.insertAdjacentHTML("beforeend", displayRecipe(recipeComponent));
+        }
     });
 }
 
