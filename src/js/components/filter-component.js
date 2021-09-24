@@ -7,6 +7,7 @@ export default class FilterComponent {
             titleMatch: filterData.title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""),
             disabled: false,
             displayed: true,
+            isInDisplayedRecipe: true,
             tagComponent: new TagComponent(filterData)
         };
     }
