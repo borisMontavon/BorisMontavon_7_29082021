@@ -8,6 +8,7 @@ import { displayFilterElements } from "./services/filter-elements/display-filter
 import { eventFilterElement } from "./services/filter-elements/event-filter-element-service";
 import { getDistinctIngredientsList } from "./services/ingredients/get-ingredients-list-service";
 import { getDistinctMachineList } from "./services/machines/get-machines-list-service";
+import { mainInputSearch } from "./services/main-input/main-input-search-service";
 import { displayAllRecipes } from "./services/recipes/display-recipe-service";
 import { topButton } from "./services/top-button/top-button-service";
 import { getDistinctUstensilsList } from "./services/ustensils/get-ustensils-list-service";
@@ -61,6 +62,8 @@ const initializeData = async () => {
         iconHtmlId: "ustensils-dropdown-icon",
         filterElements: getDistinctUstensilsList(data)
     });
+
+    mainInputSearch();
 
     displayFilterElements(store.ingredientDropdown);
     displayFilterElements(store.machineDropdown);
