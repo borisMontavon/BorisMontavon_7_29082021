@@ -10,7 +10,7 @@ export const filterRecipes = () => {
         let displayRecipe = true;
 
         if (store.mainInputValue.length) {
-            if (!recipeComponent.state.ingredientsMatch.includes(store.mainInputValue) &&
+            if (!recipeComponent.state.ingredientsMatch.some((ingredient) => ingredient.includes(store.mainInputValue)) &&
                 !recipeComponent.state.descriptionMatch.includes(store.mainInputValue) &&
                 !recipeComponent.state.nameMatch.includes(store.mainInputValue)) {
                     displayRecipe = false;
@@ -43,7 +43,6 @@ export const filterRecipes = () => {
     });
 
     displayAllRecipes();
-
     updateFiltersLists();
 }
 
