@@ -9,6 +9,14 @@ export const filterRecipes = () => {
     store.recipeComponents.map((recipeComponent) => {
         let displayRecipe = true;
 
+        if (store.mainInputValue.length) {
+            if (!recipeComponent.state.ingredientsMatch.includes(store.mainInputValue) &&
+                !recipeComponent.state.descriptionMatch.includes(store.mainInputValue) &&
+                !recipeComponent.state.nameMatch.includes(store.mainInputValue)) {
+                    displayRecipe = false;
+            }
+        }
+
         store.filtersList.forEach((filter) => {
             switch (filter.type) {
                 case "ingredients":
