@@ -11,6 +11,10 @@ export const displayAllRecipes = () => {
             recipesContainer.insertAdjacentHTML("beforeend", displayRecipe(recipeComponent));
         }
     });
+
+    if (recipesContainer.innerHTML === "") {
+        recipesContainer.insertAdjacentHTML("beforeend", '<p class="text-white-hover w-full absolute text-center">Aucune recette ne correspond à votre critère... vous pouvez chercher "tarte aux pommes", "poisson", etc.</p>');
+    }
 }
 
 const displayRecipe = (recipeComponent) => {
