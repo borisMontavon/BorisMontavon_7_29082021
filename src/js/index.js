@@ -13,6 +13,8 @@ import { displayAllRecipes } from "./services/recipes/display-recipe-service";
 import { topButton } from "./services/top-button/top-button-service";
 import { getDistinctUstensilsList } from "./services/ustensils/get-ustensils-list-service";
 
+new Store();
+
 // Recipes' data fetch from json
 const getData = async (url) => {
     const response = await fetch(url);
@@ -23,7 +25,7 @@ const getData = async (url) => {
 // Home page initialization with json's data
 const initializeData = async () => {
     const data = await getData("assets/data.json");
-    let store = new Store();
+    let store = Store.getStore();
 
     // Recipes management
     data.forEach((recipeData) => {

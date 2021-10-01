@@ -2,7 +2,7 @@ import Store from "../../components/store";
 import { filterRecipes } from "../recipes/filter-recipe-service";
 
 export const mainInputSearch = () => {
-    let store = new Store();
+    let store = Store.getStore();
 
     const mainInput = document.getElementById("input-search");
 

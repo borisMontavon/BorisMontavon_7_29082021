@@ -1,7 +1,7 @@
 import Store from "../../components/store";
 
 export const displayAllRecipes = () => {
-    let store = new Store();
+    let store = Store.getStore();
     const recipesContainer = document.getElementById("recipes-container");
 
     recipesContainer.innerHTML = "";
