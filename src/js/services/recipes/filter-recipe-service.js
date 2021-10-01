@@ -4,45 +4,54 @@ import { eventFilterElement } from "../filter-elements/event-filter-element-serv
 import { displayAllRecipes } from "./display-recipe-service";
 
 export const filterRecipes = () => {
-    let store = new Store();
+    let store = Store.getStore();
+    const storeMainInputValue = store.mainInputValue;
+    const storeFiltersList = store.filtersList;
+    const storeRecipeComponents = store.recipeComponents;
 
-    for (let i = 0; i < store.recipeComponents.length; i++) {
-        let displayRecipe = true;
-        let recipeComponent = store.recipeComponents[i];
+    if (!storeMainInputValue.length && !storeFiltersList.length) {
+        for (let i = 0; i < storeRecipeComponents.length; i++) {
+            let recipeComponent = storeRecipeComponents[i];
 
-        if (store.mainInputValue.length) {
-            if (!myArrayIncludes(recipeComponent.state.ingredientsMatch, store.mainInputValue) &&
-                !recipeComponent.state.descriptionMatch.includes(store.mainInputValue) &&
-                !recipeComponent.state.nameMatch.includes(store.mainInputValue)) {
+            recipeComponent.state.displayed = true;
+        }
+    } else {
+        for (let i = 0; i < storeRecipeComponents.length; i++) {
+            let displayRecipe = true;
+            let recipeComponent = storeRecipeComponents[i];
+    
+            if (!myArrayIncludes(recipeComponent.state.ingredientsMatch, storeMainInputValue) &&
+                !recipeComponent.state.descriptionMatch.includes(storeMainInputValue) &&
+                !recipeComponent.state.nameMatch.includes(storeMainInputValue)) {
                     displayRecipe = false;
             }
-        }
-
-        for (let y = 0; y < store.filtersList.length; y++) {
-            let filter = store.filtersList[y];
-
-            switch (filter.type) {
-                case "ingredients":
-                    if (!myArrayIncludes(recipeComponent.state.ingredientsMatch, filter.title)) {
-                        displayRecipe = false;
-                    }
-                    break;
-                case "machines":
-                    if (recipeComponent.state.applianceMatch !== filter.title) {
-                        displayRecipe = false;
-                    }
-                    break;
-                case "ustensils":
-                    if (!myArrayIncludes(recipeComponent.state.ustensilsMatch, filter.title)) {
-                        displayRecipe = false;
-                    }
-                    break;
-                default:
-                    break;
+    
+            for (let y = 0; y < storeFiltersList.length; y++) {
+                let filter = storeFiltersList[y];
+    
+                switch (filter.type) {
+                    case "ingredients":
+                        if (!myArrayIncludes(recipeComponent.state.ingredientsMatch, filter.title)) {
+                            displayRecipe = false;
+                        }
+                        break;
+                    case "machines":
+                        if (recipeComponent.state.applianceMatch !== filter.title) {
+                            displayRecipe = false;
+                        }
+                        break;
+                    case "ustensils":
+                        if (!myArrayIncludes(recipeComponent.state.ustensilsMatch, filter.title)) {
+                            displayRecipe = false;
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
+    
+            recipeComponent.state.displayed = displayRecipe;
         }
-
-        recipeComponent.state.displayed = displayRecipe;
     }
 
     displayAllRecipes();
@@ -50,7 +59,7 @@ export const filterRecipes = () => {
 }
 
 const updateFiltersLists = () => {
-    let store = new Store();
+    let store = Store.getStore();
 
     for (let x = 0; x < store.ingredientDropdown.state.filterComponents.length; x++) {
         let filterComponent = store.ingredientDropdown.state.filterComponents[x];

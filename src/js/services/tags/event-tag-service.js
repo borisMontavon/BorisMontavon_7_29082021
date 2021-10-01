@@ -5,7 +5,7 @@ export const eventTag = (filterComponent) => {
     let tagComponent = filterComponent.state.tagComponent;
     const tagHtmlElement = document.getElementById(tagComponent.state.tagHtmlId);
     const tagCloseHtmlElement = document.getElementById(tagComponent.state.tagCloseHtmlId);
-    let store = new Store();
+    let store = Store.getStore();
 
     tagCloseHtmlElement.addEventListener("click", (e) => {
         e.preventDefault();

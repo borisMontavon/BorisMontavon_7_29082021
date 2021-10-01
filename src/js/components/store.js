@@ -10,4 +10,8 @@ export default class Store {
 
         return Store._instance;
     }
+
+    static getStore() {
+        return this._instance;
+    }
 }

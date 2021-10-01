@@ -5,7 +5,7 @@ import { filterRecipes } from "../recipes/filter-recipe-service";
 
 export const eventFilterElement = (dropdownComponent) => {
     dropdownComponent.state.filterComponents.forEach((filterComponent) => {
-        let store = new Store();
+        let store = Store.getStore();
 
         if (filterComponent.state.displayed && filterComponent.state.isInDisplayedRecipe) {
             const filterHtmlElement = document.getElementById(filterComponent.state.uuid);
