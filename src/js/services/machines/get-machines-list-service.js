@@ -1,21 +1,9 @@
 // Return the filtered list of machines based on json's data (no plurial, no doubles/twins/lookalike)
 
-export const getDistinctMachineList = (recipes) => {
-    const machinesArray = [];
-
-    recipes.forEach((recipe) => {
-        machinesArray.push(recipe.appliance);
-    });
-
-    const machinesSet = [...new Set(machinesArray)];
-
-    return removeDuplicates(machinesSet);
-}
-
 const removeDuplicates = (machinesSet) => {
-    let distinctMachines = [];
+    const distinctMachines = [];
 
-    for (let currentIndex = 0; currentIndex < machinesSet.length; currentIndex++) {
+    for (let currentIndex = 0; currentIndex < machinesSet.length; currentIndex += 1) {
         let currentValue = machinesSet[currentIndex].toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
         if (currentValue[currentValue.length - 1] === "s" || currentValue[currentValue.length - 1] === "x") {
@@ -40,4 +28,16 @@ const removeDuplicates = (machinesSet) => {
     }
 
     return distinctMachines;
+};
+
+export default function getDistinctMachineList(recipes) {
+    const machinesArray = [];
+
+    recipes.forEach((recipe) => {
+        machinesArray.push(recipe.appliance);
+    });
+
+    const machinesSet = [...new Set(machinesArray)];
+
+    return removeDuplicates(machinesSet);
 }

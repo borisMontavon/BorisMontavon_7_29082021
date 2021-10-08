@@ -40,15 +40,15 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        "inter": ["Inter", "sans-serif"]
+        inter: ["Inter", "sans-serif"]
       },
       gridTemplateRows: {
-        "auto": "auto"
+        auto: "auto"
       }
-    },
+    }
   },
   variants: {
-    extend: {},
+    extend: {}
   },
-  plugins: [],
-}
+  plugins: []
+};

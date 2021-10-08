@@ -1,8 +1,25 @@
 // Management of displayed state, placeholder, events and CSS class of dropdowns
 
-import { resetDropdownsState } from "./reset-dropdown-state-service";
+import resetDropdownsState from "./reset-dropdown-state-service";
 
-export const toggleDropdowns = (dropdownComponents) => {
+// Updates the placeholder for a visible dropdown
+const updatePlaceholder = (inputId, input) => {
+    switch (inputId) {
+        case "ingredients-input":
+            input.placeholder = "Rechercher un ingrédient";
+            break;
+        case "machine-input":
+            input.placeholder = "Rechercher un appareil";
+            break;
+        case "ustensils-input":
+            input.placeholder = "Rechercher un ustensile";
+            break;
+        default:
+            break;
+    }
+};
+
+export default function toggleDropdowns(dropdownComponents) {
     dropdownComponents.forEach((dropdownComponent) => {
         const toggleDropdownElement = document.getElementById(dropdownComponent.state.toggleDropdownHtmlId);
 
@@ -46,21 +63,4 @@ export const toggleDropdowns = (dropdownComponents) => {
     document.body.addEventListener('click', () => {
         resetDropdownsState(dropdownComponents);        
     });
-}
-
-// Updates the placeholder for a visible dropdown
-const updatePlaceholder = (inputId, input) => {
-    switch(inputId) {
-        case "ingredients-input":
-            input.placeholder = "Rechercher un ingrédient";
-            break;
-        case "machine-input":
-            input.placeholder = "Rechercher un appareil";
-            break;
-        case "ustensils-input":
-            input.placeholder = "Rechercher un ustensile";
-            break;
-        default:
-            break;
-    }
 }

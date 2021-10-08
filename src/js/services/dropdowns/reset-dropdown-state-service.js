@@ -1,5 +1,5 @@
 // Collapses all the dropdowns and sets them all to their initial state (dropdown, icon, placeholder and css)
-export const resetDropdownsState = (dropdownComponents) => {
+export default function resetDropdownsState(dropdownComponents) {
     dropdownComponents.forEach((dropdownComponent) => {
         // Get the parent of the dropdown element
         const container = document.getElementById(dropdownComponent.state.containerHtmlId);

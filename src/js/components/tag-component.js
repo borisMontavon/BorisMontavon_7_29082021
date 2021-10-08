@@ -2,8 +2,8 @@ export default class TagComponent {
     constructor(tagData) {
         this.state = {
             ...tagData, // uuid title type
-            tagHtmlId: "tag-" + tagData.uuid,
-            tagCloseHtmlId: "tag-close-" + tagData.uuid
+            tagHtmlId: `tag-${tagData.uuid}`,
+            tagCloseHtmlId: `tag-close-${tagData.uuid}`
         };
     }
 

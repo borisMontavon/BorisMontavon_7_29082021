@@ -1,17 +1,17 @@
 import DropdownComponent from "./components/dropdown-component";
 import RecipeComponent from "./components/recipe-component";
 import Store from "./components/store";
-import { toggleDarkMode } from "./services/dark-mode/dark-mode-service";
-import { eventDropdownInput } from "./services/dropdown-input/event-dropdown-input-service";
-import { toggleDropdowns } from "./services/dropdowns/dropdown-service";
-import { displayFilterElements } from "./services/filter-elements/display-filter-elements-service";
-import { eventFilterElement } from "./services/filter-elements/event-filter-element-service";
-import { getDistinctIngredientsList } from "./services/ingredients/get-ingredients-list-service";
-import { getDistinctMachineList } from "./services/machines/get-machines-list-service";
-import { mainInputSearch } from "./services/main-input/main-input-search-service";
-import { displayAllRecipes } from "./services/recipes/display-recipe-service";
-import { topButton } from "./services/top-button/top-button-service";
-import { getDistinctUstensilsList } from "./services/ustensils/get-ustensils-list-service";
+import toggleDarkMode from "./services/dark-mode/dark-mode-service";
+import eventDropdownInput from "./services/dropdown-input/event-dropdown-input-service";
+import toggleDropdowns from "./services/dropdowns/dropdown-service";
+import displayFilterElements from "./services/filter-elements/display-filter-elements-service";
+import eventFilterElement from "./services/filter-elements/event-filter-element-service";
+import getDistinctIngredientsList from "./services/ingredients/get-ingredients-list-service";
+import getDistinctMachineList from "./services/machines/get-machines-list-service";
+import mainInputSearch from "./services/main-input/main-input-search-service";
+import displayAllRecipes from "./services/recipes/display-recipe-service";
+import topButton from "./services/top-button/top-button-service";
+import getDistinctUstensilsList from "./services/ustensils/get-ustensils-list-service";
 
 new Store();
 
@@ -25,7 +25,7 @@ const getData = async (url) => {
 // Home page initialization with json's data
 const initializeData = async () => {
     const data = await getData("assets/data.json");
-    let store = Store.getStore();
+    const store = Store.getStore();
 
     // Creating and displaying all recipes' components based on json's data
     data.forEach((recipeData) => {

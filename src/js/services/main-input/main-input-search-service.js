@@ -1,10 +1,10 @@
 // Get main input search value and saving it in the store
 
 import Store from "../../components/store";
-import { filterRecipes } from "../recipes/filter-recipe-service";
+import filterRecipes from "../recipes/filter-recipe-service";
 
-export const mainInputSearch = () => {
-    let store = Store.getStore();
+export default function mainInputSearch() {
+    const store = Store.getStore();
 
     const mainInput = document.getElementById("input-search");
 

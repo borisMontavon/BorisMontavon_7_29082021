@@ -1,4 +1,4 @@
-export const toggleDarkMode = () => {
+export default function toggleDarkMode() {
     const switchMode = document.getElementById("modeToggle");
 
     if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
@@ -20,5 +20,5 @@ export const toggleDarkMode = () => {
             localStorage.theme = "light";
             document.documentElement.classList.remove("dark");
         }
-    })
+    });
 }
