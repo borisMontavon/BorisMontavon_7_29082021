@@ -1,3 +1,5 @@
+// Return the filtered list of ingredients based on json's data (no plurial, no doubles/twins/lookalike)
+
 export const getDistinctIngredientsList = (recipes) => {
     const ingredientsArrays = [];
 
@@ -21,17 +23,19 @@ const removeDuplicates = (ingredientsSet) => {
         if (currentValue[currentValue.length - 1] === "s" || currentValue[currentValue.length - 1] === "x") {
             const pluralCharacter = currentValue[currentValue.length - 1];
 
-            // On enlève la dernière lettre (marque du pluriel, "s" ou "x")
+            // We remove the last letter of the word ("s" or "x" for plurial)
             currentValue = currentValue.substring(0, currentValue.length - 1);
 
-            // On vérifie si la valeur à l'itérateur currentIndex n'existe pas sans le "s" ou le "x" à la fin
+            // We check if the value at "currentIndex" doesn't exist without an "s" or "x" as last letter
             if (ingredientsSet.findIndex((item) => item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") === currentValue) === -1) {
                 currentValue += pluralCharacter;
             }
         }
 
+        // We check if there is another similar word at another index
         const duplicateIndex = ingredientsSet.findIndex((item) => item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") === currentValue);
 
+        // If not, we push the value located at "currentIndex"
         if (duplicateIndex === currentIndex || duplicateIndex === -1) {
             distinctIngredients.push(ingredientsSet[currentIndex]);
         }

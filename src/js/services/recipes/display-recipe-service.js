@@ -1,3 +1,5 @@
+// Template for recipes component and where to display it + if no recipe is displayed, just a simple text
+
 import Store from "../../components/store";
 
 export const displayAllRecipes = () => {
@@ -6,12 +8,14 @@ export const displayAllRecipes = () => {
 
     recipesContainer.innerHTML = "";
 
+    // Displaying recipe
     store.recipeComponents.forEach((recipeComponent) => {
         if (recipeComponent.state.displayed) {
             recipesContainer.insertAdjacentHTML("beforeend", displayRecipe(recipeComponent));
         }
     });
 
+    // Displaying simple text if no recipes are displayed
     if (recipesContainer.innerHTML === "") {
         recipesContainer.insertAdjacentHTML("beforeend", '<p class="text-white-hover w-full absolute text-center">Aucune recette ne correspond à votre critère... vous pouvez chercher "tarte aux pommes", "poisson", etc.</p>');
     }
@@ -50,6 +54,7 @@ const displayRecipe = (recipeComponent) => {
     return recipeHtml;
 }
 
+// Making the ingredients part of a recipe well formated
 const getIngredientsHtml = (ingredients) => {
     let ingredientsHtml = "";
 

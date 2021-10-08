@@ -1,3 +1,5 @@
+// Management of displayed state, placeholder, events and CSS class of dropdowns
+
 import { resetDropdownsState } from "./reset-dropdown-state-service";
 
 export const toggleDropdowns = (dropdownComponents) => {

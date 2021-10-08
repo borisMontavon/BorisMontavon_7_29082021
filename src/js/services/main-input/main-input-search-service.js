@@ -1,3 +1,5 @@
+// Get main input search value and saving it in the store
+
 import Store from "../../components/store";
 import { filterRecipes } from "../recipes/filter-recipe-service";
 

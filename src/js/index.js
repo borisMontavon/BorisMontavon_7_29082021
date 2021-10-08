@@ -27,7 +27,7 @@ const initializeData = async () => {
     const data = await getData("assets/data.json");
     let store = Store.getStore();
 
-    // Recipes management
+    // Creating and displaying all recipes' components based on json's data
     data.forEach((recipeData) => {
         store.recipeComponents.push(new RecipeComponent(recipeData));
     });
@@ -65,16 +65,20 @@ const initializeData = async () => {
         filterElements: getDistinctUstensilsList(data)
     });
 
+    // Main input filter function call
     mainInputSearch();
 
+    // Displaying all filter elements inside its respective dropdown
     displayFilterElements(store.ingredientDropdown);
     displayFilterElements(store.machineDropdown);
     displayFilterElements(store.ustensilDropdown);
 
+    // Adding the "click" event on these filter elements
     eventFilterElement(store.ingredientDropdown);
     eventFilterElement(store.machineDropdown);
     eventFilterElement(store.ustensilDropdown);
 
+    // Managing the filter elements' list when searching in the dropdown's input
     eventDropdownInput(store.ingredientDropdown);
     eventDropdownInput(store.machineDropdown);
     eventDropdownInput(store.ustensilDropdown);

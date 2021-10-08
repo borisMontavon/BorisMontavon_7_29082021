@@ -1,3 +1,5 @@
+// Template for the tag, and where to display it
+
 export const displayTag = (filterComponent) => {
     let tagComponent = filterComponent.state.tagComponent;
 
