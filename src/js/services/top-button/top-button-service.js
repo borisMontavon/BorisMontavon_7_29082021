@@ -1,3 +1,5 @@
+// Handling the return to top button
+
 export const topButton = () => {
     $(window).scroll(() => {
         const height = $(window).scrollTop();

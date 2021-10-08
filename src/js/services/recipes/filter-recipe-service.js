@@ -1,3 +1,5 @@
+// For each recipes, if one have the value of the main input, we display it
+
 import Store from "../../components/store"
 import { displayFilterElements } from "../filter-elements/display-filter-elements-service";
 import { eventFilterElement } from "../filter-elements/event-filter-element-service";
@@ -9,20 +11,24 @@ export const filterRecipes = () => {
     const storeFiltersList = store.filtersList;
     const storeRecipeComponents = store.recipeComponents;
 
+    // If main input value is less than 3 characters and there is no tags displayed, the recipe is displayed
     if (!storeMainInputValue.length && !storeFiltersList.length) {
         storeRecipeComponents.forEach((recipeComponent) => {
             recipeComponent.state.displayed = true;
         });
+    // Else we browse the recipe datas to see if it match the main input value / tags displayed
     } else {
         storeRecipeComponents.map((recipeComponent) => {
             let displayRecipe = true;
 
+            // Filter with the main input value
             if (!recipeComponent.state.ingredientsMatch.some((ingredient) => ingredient.includes(storeMainInputValue)) &&
                 !recipeComponent.state.descriptionMatch.includes(storeMainInputValue) &&
                 !recipeComponent.state.nameMatch.includes(storeMainInputValue)) {
                     displayRecipe = false;
             }
 
+            // Filter with the "filtersList" (tags)
             storeFiltersList.forEach((filter) => {
                 switch (filter.type) {
                     case "ingredients":
@@ -53,6 +59,7 @@ export const filterRecipes = () => {
     updateFiltersLists();
 }
 
+// Updating the 3 dropdowns' lists based on "filtersList" (tags)
 const updateFiltersLists = () => {
     let store = Store.getStore();
 

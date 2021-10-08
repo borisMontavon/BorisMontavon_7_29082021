@@ -1,3 +1,5 @@
+// Small template and where to display filter elements
+
 export const displayFilterElements = (dropdownComponent) => {
     const dropdownListHtmlElement = document.getElementById(dropdownComponent.state.dropdownHtmlId);
 
