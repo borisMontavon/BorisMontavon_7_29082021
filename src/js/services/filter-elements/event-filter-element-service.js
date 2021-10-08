@@ -1,13 +1,13 @@
 // Manage filter element state on "click" event
 
-import { displayTag } from "../tags/display-tag-service";
-import { eventTag } from "../tags/event-tag-service";
+import displayTag from "../tags/display-tag-service";
+import eventTag from "../tags/event-tag-service";
 import Store from "../../components/store";
-import { filterRecipes } from "../recipes/filter-recipe-service";
+import filterRecipes from "../recipes/filter-recipe-service";
 
-export const eventFilterElement = (dropdownComponent) => {
+export default function eventFilterElement(dropdownComponent) {
     dropdownComponent.state.filterComponents.forEach((filterComponent) => {
-        let store = Store.getStore();
+        const store = Store.getStore();
 
         // If filter element is displayed and in a displayed recipe
         if (filterComponent.state.displayed && filterComponent.state.isInDisplayedRecipe) {

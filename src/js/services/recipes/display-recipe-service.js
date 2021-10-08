@@ -2,24 +2,33 @@
 
 import Store from "../../components/store";
 
-export const displayAllRecipes = () => {
-    let store = Store.getStore();
-    const recipesContainer = document.getElementById("recipes-container");
+// Making the ingredients part of a recipe well formated
+const getIngredientsHtml = (ingredients) => {
+    let ingredientsHtml = "";
 
-    recipesContainer.innerHTML = "";
+    ingredients.forEach((ingredient) => {
+        let quantityAndUnit = "";
+        const keys = Object.keys(ingredient);
 
-    // Displaying recipe
-    store.recipeComponents.forEach((recipeComponent) => {
-        if (recipeComponent.state.displayed) {
-            recipesContainer.insertAdjacentHTML("beforeend", displayRecipe(recipeComponent));
+        if (keys.length > 1) {
+            quantityAndUnit = ": ";
+
+            for (let i = 1; i < keys.length; i += 1) {
+                quantityAndUnit += ingredient[keys[i]];
+
+                if (i < keys.length - 1) {
+                    quantityAndUnit += " ";
+                }
+            }
         }
+
+        ingredientsHtml += `<li>
+                                <p><strong>${ingredient.ingredient}</strong>${quantityAndUnit}</p>
+                            </li>`;
     });
 
-    // Displaying simple text if no recipes are displayed
-    if (recipesContainer.innerHTML === "") {
-        recipesContainer.insertAdjacentHTML("beforeend", '<p class="text-white-hover w-full absolute text-center">Aucune recette ne correspond à votre critère... vous pouvez chercher "tarte aux pommes", "poisson", etc.</p>');
-    }
-}
+    return ingredientsHtml;
+};
 
 const displayRecipe = (recipeComponent) => {
     if (!recipeComponent.state.displayed) {
@@ -52,32 +61,24 @@ const displayRecipe = (recipeComponent) => {
                     </div>`;
 
     return recipeHtml;
-}
+};
 
-// Making the ingredients part of a recipe well formated
-const getIngredientsHtml = (ingredients) => {
-    let ingredientsHtml = "";
+export default function displayAllRecipes() {
+    const store = Store.getStore();
+    const recipesContainer = document.getElementById("recipes-container");
 
-    ingredients.forEach((ingredient) => {
-        let quantityAndUnit = "";
-        const keys = Object.keys(ingredient);
+    recipesContainer.innerHTML = "";
 
-        if (keys.length > 1) {
-            quantityAndUnit = ": ";
-
-            for (let i = 1; i < keys.length; i++) {
-                quantityAndUnit += ingredient[keys[i]];
-
-                if (i < keys.length - 1) {
-                    quantityAndUnit += " ";
-                }
-            }
+    // Displaying recipe
+    store.recipeComponents.forEach((recipeComponent) => {
+        if (recipeComponent.state.displayed) {
+            recipesContainer.insertAdjacentHTML("beforeend", displayRecipe(recipeComponent));
         }
-
-        ingredientsHtml += `<li>
-                                <p><strong>${ingredient.ingredient}</strong>${quantityAndUnit}</p>
-                            </li>`;
     });
 
-    return ingredientsHtml;
-};
+    // Displaying simple text if no recipes are displayed
+    if (recipesContainer.innerHTML === "") {
+        // eslint-disable-next-line max-len
+        recipesContainer.insertAdjacentHTML("beforeend", '<p class="text-white-hover w-full absolute text-center">Aucune recette ne correspond à votre critère... vous pouvez chercher "tarte aux pommes", "poisson", etc.</p>');
+    }
+}

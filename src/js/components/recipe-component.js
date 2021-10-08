@@ -18,4 +18,4 @@ export default class RecipeComponent {
             this.state.ustensilsMatch.push(ustensil.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
         });
     }
-} 
+}

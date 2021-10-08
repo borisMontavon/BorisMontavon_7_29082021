@@ -1,21 +1,9 @@
 // Return the filtered list of ustensils based on json's data (no plurial, no doubles/twins/lookalike)
 
-export const getDistinctUstensilsList = (recipes) => {
-    const ustensilsArray = [];
-
-    recipes.forEach((recipe) => {
-        recipe.ustensils.map((ustensil) => ustensilsArray.push(ustensil));
-    });
-
-    const ustensilsSet = [...new Set(ustensilsArray)];
-
-    return removeDuplicates(ustensilsSet);
-}
-
 const removeDuplicates = (ustensilsSet) => {
-    let distinctUstensils = [];
+    const distinctUstensils = [];
 
-    for (let currentIndex = 0; currentIndex < ustensilsSet.length; currentIndex++) {
+    for (let currentIndex = 0; currentIndex < ustensilsSet.length; currentIndex += 1) {
         let currentValue = ustensilsSet[currentIndex].toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
         if (currentValue[currentValue.length - 1] === "s" || currentValue[currentValue.length - 1] === "x") {
@@ -40,4 +28,16 @@ const removeDuplicates = (ustensilsSet) => {
     }
 
     return distinctUstensils;
+};
+
+export default function getDistinctUstensilsList(recipes) {
+    const ustensilsArray = [];
+
+    recipes.forEach((recipe) => {
+        recipe.ustensils.map((ustensil) => ustensilsArray.push(ustensil));
+    });
+
+    const ustensilsSet = [...new Set(ustensilsArray)];
+
+    return removeDuplicates(ustensilsSet);
 }

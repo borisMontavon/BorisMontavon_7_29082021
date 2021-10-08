@@ -22,6 +22,9 @@
   "homepage": "https://github.com/borisMontavon/BorisMontavon_7_29082021#readme",
   "devDependencies": {
     "autoprefixer": "^10.3.3",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.0",
     "postcss": "^8.3.6",
     "postcss-cli": "^8.3.1",
     "postcss-import": "^14.0.2",

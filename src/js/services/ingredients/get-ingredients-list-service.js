@@ -1,23 +1,9 @@
 // Return the filtered list of ingredients based on json's data (no plurial, no doubles/twins/lookalike)
 
-export const getDistinctIngredientsList = (recipes) => {
-    const ingredientsArrays = [];
-
-    recipes.forEach((recipe) => {
-        recipe.ingredients.map((ingredient) => ingredientsArrays.push(ingredient.ingredient));
-    });
-
-    const ingredientsArray = Array.prototype.concat.apply([], ingredientsArrays);
-
-    const ingredientsSet = [...new Set(ingredientsArray)];
-
-    return removeDuplicates(ingredientsSet);
-}
-
 const removeDuplicates = (ingredientsSet) => {
-    let distinctIngredients = [];
+    const distinctIngredients = [];
 
-    for (let currentIndex = 0; currentIndex < ingredientsSet.length; currentIndex++) {
+    for (let currentIndex = 0; currentIndex < ingredientsSet.length; currentIndex += 1) {
         let currentValue = ingredientsSet[currentIndex].toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
         if (currentValue[currentValue.length - 1] === "s" || currentValue[currentValue.length - 1] === "x") {
@@ -33,6 +19,7 @@ const removeDuplicates = (ingredientsSet) => {
         }
 
         // We check if there is another similar word at another index
+        // eslint-disable-next-line max-len
         const duplicateIndex = ingredientsSet.findIndex((item) => item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") === currentValue);
 
         // If not, we push the value located at "currentIndex"
@@ -42,4 +29,18 @@ const removeDuplicates = (ingredientsSet) => {
     }
 
     return distinctIngredients;
+};
+
+export default function getDistinctIngredientsList(recipes) {
+    const ingredientsArrays = [];
+
+    recipes.forEach((recipe) => {
+        recipe.ingredients.map((ingredient) => ingredientsArrays.push(ingredient.ingredient));
+    });
+
+    const ingredientsArray = Array.prototype.concat.apply([], ingredientsArrays);
+
+    const ingredientsSet = [...new Set(ingredientsArray)];
+
+    return removeDuplicates(ingredientsSet);
 }

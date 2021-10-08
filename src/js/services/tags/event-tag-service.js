@@ -1,13 +1,13 @@
 // Handling the close button on a tag created
 
 import Store from "../../components/store";
-import { filterRecipes } from "../recipes/filter-recipe-service";
+import filterRecipes from "../recipes/filter-recipe-service";
 
-export const eventTag = (filterComponent) => {
-    let tagComponent = filterComponent.state.tagComponent;
+export default function eventTag(filterComponent) {
+    const { tagComponent } = filterComponent.state;
     const tagHtmlElement = document.getElementById(tagComponent.state.tagHtmlId);
     const tagCloseHtmlElement = document.getElementById(tagComponent.state.tagCloseHtmlId);
-    let store = Store.getStore();
+    const store = Store.getStore();
 
     // "Click" event listener on the close button in the tag
     tagCloseHtmlElement.addEventListener("click", (e) => {
@@ -27,7 +27,7 @@ export const eventTag = (filterComponent) => {
         // If filter element match type and title of the tag, we remove it from the "filterList" in the store, and display it afterwards
         store.filtersList.forEach((element) => {
             if (element.type === filterComponent.state.type && element.title === filterComponent.state.titleMatch) {
-                let index = store.filtersList.indexOf(element);
+                const index = store.filtersList.indexOf(element);
 
                 store.filtersList.splice(index, 1);
             }
