@@ -15,6 +15,16 @@ const myArrayIncludes = (array, matchParam) => {
     return false;
 };
 
+const myArrayStrictlyIncludes = (array, matchParam) => {
+    for (let i = 0; i < array.length; i += 1) {
+        if (array[i] === matchParam) {
+            return true;
+        }
+    }
+
+    return false;
+};
+
 const myArraySome = (array, callback) => {
     for (let i = 0; i < array.length; i += 1) {
         if (callback(array[i])) {
@@ -33,7 +43,7 @@ const updateFiltersLists = () => {
         const filterComponent = store.ingredientDropdown.state.filterComponents[x];
 
         filterComponent.state.isInDisplayedRecipe = myArraySome(store.recipeComponents, (recipeComponent) =>
-            recipeComponent.state.displayed && myArrayIncludes(recipeComponent.state.ingredientsMatch, filterComponent.state.titleMatch));
+            recipeComponent.state.displayed && myArrayStrictlyIncludes(recipeComponent.state.ingredientsMatch, filterComponent.state.titleMatch));
     }
 
     displayFilterElements(store.ingredientDropdown);
@@ -53,7 +63,7 @@ const updateFiltersLists = () => {
         const filterComponent = store.ustensilDropdown.state.filterComponents[z];
 
         filterComponent.state.isInDisplayedRecipe = myArraySome(store.recipeComponents, (recipeComponent) => 
-            recipeComponent.state.displayed && myArrayIncludes(recipeComponent.state.ustensilsMatch, filterComponent.state.titleMatch));
+            recipeComponent.state.displayed && myArrayStrictlyIncludes(recipeComponent.state.ustensilsMatch, filterComponent.state.titleMatch));
     }
 
     displayFilterElements(store.ustensilDropdown);
@@ -92,7 +102,7 @@ export default function filterRecipes() {
     
                 switch (filter.type) {
                     case "ingredients":
-                        if (!myArrayIncludes(recipeComponent.state.ingredientsMatch, filter.title)) {
+                        if (!myArrayStrictlyIncludes(recipeComponent.state.ingredientsMatch, filter.title)) {
                             displayRecipe = false;
                         }
                         break;
@@ -102,7 +112,7 @@ export default function filterRecipes() {
                         }
                         break;
                     case "ustensils":
-                        if (!myArrayIncludes(recipeComponent.state.ustensilsMatch, filter.title)) {
+                        if (!myArrayStrictlyIncludes(recipeComponent.state.ustensilsMatch, filter.title)) {
                             displayRecipe = false;
                         }
                         break;
